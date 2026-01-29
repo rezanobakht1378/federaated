@@ -27,9 +27,19 @@ clientapp = "project.client_app:app"
 [tool.flwr.app.config]
 num-server-rounds = 3
 fraction-evaluate = 0.5
-local-epochs = 1
+local-epochs = 5
 learning-rate = 0.1
 batch-size = 32
+
+[tool.flwr.app.node.config]
+num-partitions = 10  # Number of clients/partitions
+
+[tool.flwr.app.power-config]
+power-decay-per-epoch = 5  # درصد کاهش شارژ در هر اپوک
+charging-power-increase = 10  # درصد افزایش شارژ در حالت شارژ
+delta-c-discharging = -0.05  # کاهش قدرت محاسباتی در حالت دشارژ
+delta-c-charging = +0.1  # افزایش قدرت محاسباتی در حالت شارژ
+charging-probability= -0.3  # احتمال دلتا سی برای شارژ شدن گوشی
 
 [tool.flwr.federations]
 default = "local-simulation"
