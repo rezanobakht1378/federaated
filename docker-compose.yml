@@ -16,6 +16,7 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
       - POLARS_SKIP_CPU_CHECK=1
+      - RAY_DISABLE_METRICS_EXPORT=1
     volumes:
       - .:/app
     restart: no
